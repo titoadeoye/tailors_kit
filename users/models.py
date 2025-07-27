@@ -18,6 +18,13 @@ class User(AbstractUser):
         ("Support", "support"),  # can moderate flagged posts, etc.
     )
 
+    username = models.CharField(
+        max_length=150,
+        unique=True,
+        null=True,     # <- allow null in DB
+        blank=True     # <- allow empty in forms
+    )
+    email = models.EmailField(unique=True, null=False, blank=False)
     first_name = models.CharField(max_length=60)
     last_name = models.CharField(max_length=60, blank=True)
     role = models.CharField(
