@@ -12,4 +12,8 @@ COPY . .
 
 EXPOSE 8000
 
-CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]
+# Give it permission to run
+RUN chmod +x start.sh
+
+# Tell Docker to run the script instead of just running the server
+CMD ["./start.sh"]
